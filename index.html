@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Helmet Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-purple-400 to-blue-200 min-h-screen font-sans text-purple-900">
+
+  <header class="bg-purple-700 text-white p-6 shadow-md sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <h1 class="text-3xl font-bold">Yui Premium Helmet Shop</h1>
+
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search helmets..."
+        class="px-4 py-2 rounded-lg w-full max-w-md text-purple-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
+        oninput="filterProducts()"
+      />
+    </div>
+  </header>
+
+  <section class="max-w-7xl mx-auto p-6 text-center bg-white bg-opacity-60 rounded-xl shadow-md my-8">
+    <h2 class="text-2xl font-semibold mb-2">About Me</h2>
+    <p class="text-purple-800 max-w-xl mx-auto">
+      Yoo, wuts up bro, welcome to my helmet shop, Your one stop with cheap helmet shop is at your town now!! You can shop now Pay Later with installment!!
+    </p>
+  </section>
+
+  <main id="product-grid" class="max-w-7xl mx-auto p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+    <!-- Helmet cards -->
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="Arai RX-7V" data-price="599">
+      <img src="https://cdn.motor1.com/images/mgl/6Jm4V/s1/arai-rx-7v-helmet.jpg" alt="Arai RX-7V Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">Arai RX-7V</h2>
+      <p class="font-bold mt-1">RM3,500</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(12)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="Shoei X-Spirit III" data-price="699">
+      <img src="https://cdn.shopify.com/s/files/1/0270/1047/9876/products/Shoei-X-Spirit-III-Moto-Helmet-Black-Red-Glossy-Front_600x.jpg" alt="Shoei Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">Shoei X-Spirit III</h2>
+      <p class="font-bold mt-1">RM 5,200</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(20)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="AGV Pista GP RR" data-price="999">
+      <img src="https://cdn.motor1.com/images/mgl/9O7O9/s1/agv-pista-gp-rr.jpg" alt="AGV Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">AGV Pista GP RR</h2>
+      <p class="font-bold mt-1">RM 8,899</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(8)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="Shark Race-R Pro" data-price="549">
+      <img src="https://cdn.motor1.com/images/mgl/P4xkX/s1/shark-race-r-pro.jpg" alt="Shark Race-R Pro Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">Shark Race-R Pro</h2>
+      <p class="font-bold mt-1">RM 5,200</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(15)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="HJC RPHA 11" data-price="479">
+      <img src="https://cdn.shopify.com/s/files/1/0052/1214/8833/products/hjc-rpha-11-pro-mc5-p-black_600x.jpg" alt="HJC RPHA 11 Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">HJC RPHA 11</h2>
+      <p class="font-bold mt-1">RM 9,999</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(25)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="LS2 FF805 Thunder" data-price="399">
+      <img src="https://cdn.shopify.com/s/files/1/0067/4411/8827/products/FF805_Thunder_FIM_Black_Carbon_702_1_600x.jpg" alt="LS2 FF805 Thunder Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">LS2 FF805 Thunder</h2>
+      <p class="font-bold mt-1">RM 10,999</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(9)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <!-- New 10 helmets -->
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="Bell Race Star" data-price="999">
+      <img src="https://cdn.motor1.com/images/mgl/QWq1E/s1/bell-race-star-helmet.jpg" alt="Bell Race Star Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">Bell Race Star</h2>
+      <p class="font-bold mt-1">RM 20,999</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(7)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="Icon Airflite" data-price="649">
+      <img src="https://cdn.shopify.com/s/files/1/0410/6109/9733/products/Icon-Airflite-Helmet-Black-Red_600x.jpg" alt="Icon Airflite Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">Icon Airflite</h2>
+      <p class="font-bold mt-1">RM 8,999</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(11)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="Nolan N100-5" data-price="480">
+      <img src="https://cdn.shopify.com/s/files/1/0147/6909/9127/products/nolan-n100-5-carbon-helmet-black-600x600_600x.jpg" alt="Nolan N100-5 Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">Nolan N100-5</h2>
+      <p class="font-bold mt-1">RM 2,999</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(6)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="Airoh Valor" data-price="420">
+      <img src="https://cdn.shopify.com/s/files/1/0270/1047/9876/products/AIROH_VALOR_Black_1_600x.jpg" alt="Airoh Valor Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">Airoh Valor</h2>
+      <p class="font-bold mt-1">RM 1,999</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(5)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="Scorpion EXO-R1 Air" data-price="530">
+      <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/products/EXO-R1-Air-Matte-Black-Red-2_600x.jpg" alt="Scorpion EXO-R1 Air Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">Scorpion EXO-R1 Air</h2>
+      <p class="font-bold mt-1">RM 6,789</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(10)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="LS2 Rapid" data-price="310">
+      <img src="https://cdn.shopify.com/s/files/1/0067/4411/8827/products/FF323_RAPID_SOLID_009_600x.jpg" alt="LS2 Rapid Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">LS2 Rapid</h2>
+      <p class="font-bold mt-1">RM 11,999</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(4)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="HJC IS-MAX II" data-price="340">
+      <img src="https://cdn.shopify.com/s/files/1/0052/1214/8833/products/hjc-is-max-ii-black_600x.jpg" alt="HJC IS-MAX II Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">HJC IS-MAX II</h2>
+      <p class="font-bold mt-1">RM 2,989</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(18)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="Shark Spartan GT" data-price="630">
+      <img src="https://cdn.motor1.com/images/mgl/2MVoG/s1/shark-spartan-gt.jpg" alt="Shark Spartan GT Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">Shark Spartan GT</h2>
+      <p class="font-bold mt-1">RM 8,789</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(14)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="AGV K6" data-price="720">
+      <img src="https://cdn.motor1.com/images/mgl/xElxk/s1/agv-k6-helmet.jpg" alt="AGV K6 Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">AGV K6</h2>
+      <p class="font-bold mt-1">RM 23,965</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(9)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+    <div class="card p-5 bg-white bg-opacity-90 rounded-xl shadow-md hover:shadow-xl transition-shadow cursor-pointer" data-name="Shoei GT-Air II" data-price="650">
+      <img src="https://cdn.shopify.com/s/files/1/0054/8106/0589/products/shoei-gt-air-ii-helmet-600x600_600x.jpg" alt="Shoei GT-Air II Helmet" class="w-full h-48 object-cover rounded-xl" />
+      <h2 class="text-xl font-semibold mt-4">Shoei GT-Air II</h2>
+      <p class="font-bold mt-1">RM 2,999</p>
+      <div class="mt-2 flex items-center space-x-1 text-yellow-400">
+        <span>⭐⭐⭐⭐</span>
+        <span class="text-gray-600 ml-2">(19)</span>
+      </div>
+      <button onclick="addToCart(this)" class="mt-4 w-full bg-purple-600 text-white py-2 rounded-xl shadow-md hover:bg-purple-700 font-semibold">Add to Cart</button>
+    </div>
+
+  </main>
+
+  <section class="max-w-7xl mx-auto p-8 bg-white bg-opacity-60 rounded-xl shadow-md my-8">
+    <h2 class="text-2xl font-semibold mb-4">Contact Us</h2>
+    <form id="contactForm" class="max-w-lg mx-auto space-y-4" onsubmit="submitContactForm(event)">
+      <input type="text" id="name" placeholder="Your Name" required class="w-full px-4 py-2 rounded-lg border border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+      <input type="email" id="email" placeholder="Your Email" required class="w-full px-4 py-2 rounded-lg border border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+      <textarea id="message" placeholder="Your Message" required rows="4" class="w-full px-4 py-2 rounded-lg border border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+      <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Cart Sidebar -->
+  <aside id="cartSidebar" class="fixed top-0 right-0 h-full w-96 bg-white bg-opacity-95 shadow-lg p-6 overflow-y-auto transform translate-x-full transition-transform z-20">
+    <h2 class="text-2xl font-semibold mb-6">Your Cart</h2>
+    <ul id="cartItems" class="space-y-4"></ul>
+    <p class="font-bold mt-6 text-lg">Total: $<span id="cartTotal">0</span></p>
+    <button id="checkoutBtn" class="mt-6 w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700">Checkout</button>
+    <button onclick="toggleCart()" class="absolute top-4 right-4 text-purple-700 font-bold">✕ Close</button>
+  </aside>
+
+  <!-- Cart Toggle Button -->
+  <button onclick="toggleCart()" class="fixed bottom-8 right-8 bg-purple-700 text-white rounded-full p-4 shadow-lg hover:bg-purple-800 focus:outline-none z-30" title="View Cart">
+    🛒
+  </button>
+
+<script>
+  const cart = [];
+
+  function addToCart(button) {
+    const card = button.closest('.card');
+    const name = card.getAttribute('data-name');
+    const price = parseFloat(card.getAttribute('data-price'));
+
+    // Check if item already in cart
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({name, price, qty: 1});
+    }
+    updateCartUI();
+    alert(`${name} added to cart!`);
+  }
+
+  function updateCartUI() {
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    cartItems.innerHTML = '';
+
+    let total = 0;
+    cart.forEach((item, index) => {
+      total += item.price * item.qty;
+      const li = document.createElement('li');
+      li.className = 'flex justify-between items-center border-b border-purple-300 pb-2';
+
+      li.innerHTML = `
+        <div>
+          <p class="font-semibold">${item.name}</p>
+          <p>$${item.price} x ${item.qty}</p>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button onclick="changeQty(${index}, -1)" class="px-2 bg-purple-300 rounded hover:bg-purple-400">-</button>
+          <button onclick="changeQty(${index}, 1)" class="px-2 bg-purple-300 rounded hover:bg-purple-400">+</button>
+          <button onclick="removeFromCart(${index})" class="text-red-600 font-bold px-2">x</button>
+        </div>
+      `;
+      cartItems.appendChild(li);
+    });
+
+    cartTotal.textContent = total.toFixed(2);
+  }
+
+  function changeQty(index, delta) {
+    cart[index].qty += delta;
+    if (cart[index].qty <= 0) {
+      cart.splice(index, 1);
+    }
+    updateCartUI();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+  }
+
+  function toggleCart() {
+    const sidebar = document.getElementById('cartSidebar');
+    sidebar.classList.toggle('translate-x-full');
+  }
+
+  document.getElementById('checkoutBtn').addEventListener('click', () => {
+    if(cart.length === 0){
+      alert("Your cart is empty.");
+      return;
+    }
+    alert("Thank you for your purchase! (Demo checkout)");
+    cart.length = 0; // Clear cart
+    updateCartUI();
+    toggleCart();
+  });
+
+  // Search filter
+  function filterProducts() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name').toLowerCase();
+      if(name.includes(input)){
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Contact form submit handler (demo only)
+  function submitContactForm(event) {
+    event.preventDefault();
+    alert("Thank you for contacting Me. I'll get back to you shortly or never!!!.");
+    event.target.reset();
+  }
+</script>
+
+</body>
+</html>
